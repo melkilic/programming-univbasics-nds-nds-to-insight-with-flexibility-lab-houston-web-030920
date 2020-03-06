@@ -1,11 +1,11 @@
 # Provided, don't edit
 require 'directors_database'
-
+require 'pry'
 # A method we're giving you. This "flattens"  Arrays of Arrays so: [[1,2],
 # [3,4,5], [6]] => [1,2,3,4,5,6].
 
 def flatten_a_o_a(aoa)
-  result = []
+ result = []
   i = 0
 
   while i < aoa.length do
@@ -34,6 +34,14 @@ end
 # Your code after this point
 
 def movies_with_director_key(name, movies_collection)
+  binding.pry
+  collection = []
+  i = 0
+  while i < movies_collection.length do
+    collection << movie_with_director_name(name, movies_collection[i])
+    i += 1
+  end
+  collection
   # GOAL: For each Hash in an Array (movies_collection), provide a collection
   # of movies and a directors name to the movie_with_director_name method
   # and accumulate the returned Array of movies into a new Array that's
@@ -66,6 +74,12 @@ def gross_per_studio(collection)
 end
 
 def movies_with_directors_set(source)
+  array = []
+   count = 0
+   while count < source.length do
+     array << movies_with_director_key[count]
+     count += 1
+   end
   # GOAL: For each director, find their :movies Array and stick it in a new Array
   #
   # INPUT:
